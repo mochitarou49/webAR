@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let video = null;
     const init = async () => {
-     video = await loadVideo("SMILY.mp4");
+     video = await loadVideo("SMILY2.mp4");
      texture = new THREE.VideoTexture(video);
       video.play();
       video.pause();
