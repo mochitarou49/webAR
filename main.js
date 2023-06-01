@@ -32,14 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.group.add(plane);
 
     anchor.onTargetFound = () => {
-        video.play();
-      }
-      anchor.onTargetLost = () => {
-        video.pause();
-      }
-      video.addEventListener('play', () => {
-        video.currentTime = 6;
-      });
+      video.play();
+    }
+    anchor.onTargetLost = () => {
+      video.pause();
+    }
+    video.addEventListener('play', () => {
+      video.currentTime = 6;
+    });
 
     await mindarThree.start();
     renderer.setAnimationLoop(() => {
