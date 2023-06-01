@@ -2,6 +2,15 @@ import {loadGLTF,loadVideo} from "./libs/loader.js";
 const THREE = window.MINDAR.IMAGE.THREE;
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  let video = null;
+    const init = async () => {
+     video = await loadVideo("snow.mp4");
+     texture = new THREE.VideoTexture(video);
+      video.play();
+      video.pause();
+    }
+
   const start = async() => {
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
