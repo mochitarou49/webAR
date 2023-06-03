@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const { renderer, scene, camera } = mindarThree;
 
-    // const video = await loadVideo("./assets/videos/sintel/snow.mp4");
     const video = await loadVideo("SMILY2.mp4");
     const texture = new THREE.VideoTexture(video);
 
