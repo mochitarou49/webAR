@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let video = null;
   const init = async () => {
-    video = await loadVideo("SMILY2.mp4");
+    video = await loadVideo("Disney.mp4");
     texture = new THREE.VideoTexture(video);
     video.play();
     video.pause();
@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const start = async () => {
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: './assets/targets/targets.mind',
+      imageTargetSrc: './assets/targets/Disney.mind',
     });
     const { renderer, scene, camera } = mindarThree;
 
-    const video = await loadVideo("SMILY2.mp4");
+    const video = await loadVideo("Disney.mp4");
     const texture = new THREE.VideoTexture(video);
 
     const geometry = new THREE.PlaneGeometry(1, 204 / 480);
