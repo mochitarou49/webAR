@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(DisneyButton);
 
   const SnowButton = document.createElement("button");
-  SnowButton.textContent = "Snow";
+  SnowButton.textContent = "snow";
   SnowButton.addEventListener("click", Snow);
   document.body.appendChild(SnowButton);
 });
