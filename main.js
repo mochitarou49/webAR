@@ -1,5 +1,8 @@
 import { loadGLTF, loadVideo } from "./libs/loader.js";
+
+
 const THREE = window.MINDAR.IMAGE.THREE;
+// const png = CreateTextPng("文字を表示","96px","#ffffff");
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -40,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const video1 = await loadVideo("snow.mp4");
     const texture0 = new THREE.VideoTexture(video0);
     const texture1 = new THREE.VideoTexture(video1);
+    const texture2 = THREE.ImageUtils.loadTexture('SMILY.jpg')
 
 
     const geometry = new THREE.PlaneGeometry(1, 270 / 480);
@@ -55,6 +59,22 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor1.group.add(plane1);
 
 
+    const fontLoader = new THREE.FontLoader();
+    fontLoader.load("../assets/fonts/helvetiker_regular.typeface.json", function(font) {
+      const textMesh = new THREE.Mesh(
+        new THREE.TextGeometry(`TextGeometry Scene`, {
+          font: font, // フォントを指定 (FontLoaderで読み込んだjson形式のフォント)
+          size: 10,   // 文字のサイズを指定
+          height: 1,  // 文字の厚さを指定
+        }),
+        new THREE.MeshBasicMaterial({
+          color: `#ccc`, // 文字の色
+        })
+      );
+      anchor1.group.add(textMesh);
+    });
+
+
     anchor0.onTargetFound = () => {
       video0.play();
     }
@@ -65,15 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
       video0.currentTime = 0;
     });
 
-    anchor1.onTargetFound = () => {
-      video1.play();
-    }
-    anchor1.onTargetLost = () => {
-      video1.pause();
-    }
-    video1.addEventListener('play', () => {
-      video1.currentTime = 0;
-    });
+    // anchor1.onTargetFound = () => {
+    //   video1.play();
+    // }
+    // anchor1.onTargetLost = () => {
+    //   video1.pause();
+    // }
+    // video1.addEventListener('play', () => {
+    //   video1.currentTime = 0;
+    // });
 
     await mindarThree.start();
     renderer.setAnimationLoop(() => {
@@ -88,8 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
   startButton.addEventListener("click", start);
   document.body.appendChild(startButton);
 
-  const restartButton = document.createElement("button");
-  restartButton.textContent = "Restart";
-  restartButton.addEventListener("click", start);
-  document.body.appendChild(restartButton);
+  // const restartButton = document.createElement("button");
+  // restartButton.textContent = "Restart";
+  // restartButton.addEventListener("click", start);
+  // document.body.appendChild(restartButton);
 });
