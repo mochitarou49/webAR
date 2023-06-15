@@ -85,15 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
       video0.currentTime = 0;
     });
 
-    // anchor1.onTargetFound = () => {
-    //   video1.play();
-    // }
-    // anchor1.onTargetLost = () => {
-    //   video1.pause();
-    // }
-    // video1.addEventListener('play', () => {
-    //   video1.currentTime = 0;
-    // });
+    anchor1.onTargetFound = () => {
+      video1.play();
+    }
+    anchor1.onTargetLost = () => {
+      video1.pause();
+    }
+    video1.addEventListener('play', () => {
+      video1.currentTime = 0;
+    });
 
     await mindarThree.start();
     renderer.setAnimationLoop(() => {
