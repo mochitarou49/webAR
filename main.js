@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
           color: `#ccc`, // 文字の色
         })
       );
-      anchor1.group.add(textMesh);
+      // anchor1.group.add(textMesh);
     });
 
 
