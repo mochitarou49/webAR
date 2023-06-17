@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const setupSnow = async () => {
-    const videoSet =await makeVideoPlane('assets/videos/snow.mp4');
-    const anchor = mindarThree.addAnchor(0);
+    const videoSet = await makeVideoPlane('assets/videos/snow.mp4');
+    const anchor = mindarThree.addAnchor(1);
     anchor.group.add(videoSet.plane);
     anchor.onTargetFound = () => {
       videoSet.video.play();
