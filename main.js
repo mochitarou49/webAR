@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const textMesh = new THREE.Mesh(
       new THREE.TextGeometry(text, {
         font: font, // フォントを指定 (FontLoaderで読み込んだjson形式のフォント)
-        size: 10,   // 文字のサイズを指定
-        height: 1,  // 文字の厚さを指定
+        size: 0.1,   // 文字のサイズを指定
+        height: 0.01,  // 文字の厚さを指定
       }),
       new THREE.MeshBasicMaterial({
         color: `#ccc`, // 文字の色
@@ -65,10 +65,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const textMesh = makeTextMesh('Disney');
     anchor.group.add(textMesh);
 
-    await mindarThree.start();
-    renderer.setAnimationLoop(() => {
-      renderer.render(scene, camera);
-    });
   }
 
   const setupSnow = async () => {
