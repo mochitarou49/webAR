@@ -7,15 +7,15 @@ const THREE = window.MINDAR.IMAGE.THREE;
  * HTMLがロードされた時に実行される
  */
 document.addEventListener('DOMContentLoaded', async () => {
-  const mindarThree = new window.MINDAR.IMAGE.MindARThree({
-    container: document.body,
-    imageTargetSrc: './assets/targets/targets.mind',
-  });
-  const { renderer, scene, camera } = mindarThree;
-  await mindarThree.start();
-  renderer.setAnimationLoop(() => {
-    renderer.render(scene, camera);
-  });
+  // const mindarThree = new window.MINDAR.IMAGE.MindARThree({
+  //   container: document.body,
+  //   imageTargetSrc: './assets/targets/targets.mind',
+  // });
+  // const { renderer, scene, camera } = mindarThree;
+  // await mindarThree.start();
+  // renderer.setAnimationLoop(() => {
+  //   renderer.render(scene, camera);
+  // });
 
   let font = null;
   const fontLoader = new THREE.FontLoader();
@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     return textMesh;
   };
 
-  const setupDisney = async () => {
+  const Load_Disney = async () => {
+
     const videoSet = await makeVideoPlane('assets/videos/Disney.mp4');
     const anchor = mindarThree.addAnchor(0);
     anchor.group.add(videoSet.plane);
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   }
 
-  const setupSnow = async () => {
+  const Load_Snow = async () => {
     const videoSet = await makeVideoPlane('assets/videos/snow.mp4');
     const anchor = mindarThree.addAnchor(1);
     anchor.group.add(videoSet.plane);
@@ -81,8 +82,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     anchor.group.add(textMesh);
   };
 
-  const startDesneyButton = document.getElementById('start-disney-button');
-  startDesneyButton.addEventListener('click', setupDisney);
+  const Start = async () => {
+
+    const mindarThree = new window.MINDAR.IMAGE.MindARThree({
+      container: document.body,
+      imageTargetSrc: './assets/targets/targets.mind',
+    });
+    const { renderer, scene, camera } = mindarThree;
+    await mindarThree.start();
+    renderer.setAnimationLoop(() => {
+      renderer.render(scene, camera);
+    });
+
+  }
+
+  const startButton = document.getElementById('start-button');
+  startButton.addEventListener('click', Start);
   const startSnowButton = document.getElementById('start-snow-button');
-  startSnowButton.addEventListener('click', setupSnow);
+  startSnowButton.addEventListener('click', Load_Snow);
+  const startDesneyButton = document.getElementById('start-disney-button');
+  startDesneyButton.addEventListener('click', Load_Disney);
 });
