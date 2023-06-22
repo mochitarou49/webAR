@@ -7,16 +7,8 @@ const THREE = window.MINDAR.IMAGE.THREE;
  * HTMLがロードされた時に実行される
  */
 document.addEventListener('DOMContentLoaded', async () => {
-  // const mindarThree = new window.MINDAR.IMAGE.MindARThree({
-  //   container: document.body,
-  //   imageTargetSrc: './assets/targets/targets.mind',
-  // });
-  // const { renderer, scene, camera } = mindarThree;
-  // await mindarThree.start();
-  // renderer.setAnimationLoop(() => {
-  //   renderer.render(scene, camera);
-  // });
-
+  let mindarThree = null;
+  
   let font = null;
   const fontLoader = new THREE.FontLoader();
   fontLoader.load('../assets/fonts/helvetiker_regular.typeface.json', (_font) => {
@@ -52,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     return textMesh;
   };
 
-  const Load_Disney = async () => {
+  const loadDisney = async () => {
 
     const videoSet = await makeVideoPlane('assets/videos/Disney.mp4');
     const anchor = mindarThree.addAnchor(0);
@@ -68,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   }
 
-  const Load_Snow = async () => {
+  const loadSnow = async () => {
     const videoSet = await makeVideoPlane('assets/videos/snow.mp4');
     const anchor = mindarThree.addAnchor(1);
     anchor.group.add(videoSet.plane);
@@ -84,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const Start = async () => {
 
-    const mindarThree = new window.MINDAR.IMAGE.MindARThree({
+    mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
       imageTargetSrc: './assets/targets/targets.mind',
     });
@@ -99,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const startButton = document.getElementById('start-button');
   startButton.addEventListener('click', Start);
   const startSnowButton = document.getElementById('start-snow-button');
-  startSnowButton.addEventListener('click', Load_Snow);
+  startSnowButton.addEventListener('click', loadSnow);
   const startDesneyButton = document.getElementById('start-disney-button');
-  startDesneyButton.addEventListener('click', Load_Disney);
+  startDesneyButton.addEventListener('click', loadDisney);
 });
